@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preview</title>
+  </head>
+  <body>
+    <script type="importmap"></script>
+    <script type="module" id="appScript"></script>
+    <div id="root"></div>
+  </body>
+  <script>
+    const appScript = "appScript";
+    window.addEventListener("message", function (event) {
+      if (event.data.type === "UPDATE_CONTENT") {
+        const oldScript = document.getElementById(appScript);
+        const newScript = document.createElement("script");
+        newScript.id = appScript;
+        newScript.type = "module";
+        newScript.textContent = event.data.content;
+        oldScript.parentNode.replaceChild(newScript, oldScript);
+      } else if (event.data.type === "UPDATE_THEME") {
+        const theme = event.data.theme;
+        if (theme) {
+          document.body.className = "dark";
+        } else {
+          document.body.className = "light";
+        }
+      }
+    });
+  </script>
+  <script>
+    window.addEventListener("error", (e) => {
+      const message = e.message;
+      const regex =
+        /Failed to resolve module specifier "(.*?)"\. Relative references must start with either "\/", "\.\/", or "\.\.\/"\./;
+
+      const newMessage = message.replace(
+        regex,
+        'Failed to resolve module specifier "$1". Tip: edit the "Import Map" tab to specify import paths for dependencies.'
+      );
+      window.parent.postMessage({ type: "ERROR", message: newMessage }, "*");
+    });
+  </script>
+</html>
