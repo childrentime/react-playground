@@ -2,7 +2,7 @@
 import importMap from '!!raw-loader!./template/import-map.json?raw'
 import AppCss from '!!raw-loader!./template/App.css?raw'
 import App from '!!raw-loader!./template/App.tsx?raw'
-import main from '!!raw-loader!./template/main.tsx?raw'
+import main from '!!raw-loader!./template/Main.tsx?raw'
 import { fileName2Language } from '../_utils'
 import { Files } from './store'
 
