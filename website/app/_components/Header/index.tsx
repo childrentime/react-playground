@@ -40,7 +40,9 @@ export function Header() {
             toast.success("files downloaded");
           }}
         />
-        <GithubIcon className="cursor-pointer ml-2" />
+        <GithubIcon className="cursor-pointer ml-2" onClick={() => {
+          window.open("https://github.com/childrentime/react-playground", "_blank");
+        }}/>
       </div>
     </div>
   );
