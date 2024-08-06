@@ -36,7 +36,8 @@
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "^5",
-    "zustand": "^4.5.4"
+    "zustand": "^4.5.4",
+    "raw-loader": "^4.0.2"
   },
   "devDependencies": {
     "@types/babel__core": "^7.20.5",
@@ -48,7 +49,6 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.5",
     "postcss": "^8",
-    "raw-loader": "^4.0.2",
     "tailwindcss": "^3.4.1"
   }
 }
