@@ -31,6 +31,7 @@ interface PlaygroundStore {
 const getFilesFromUrl = () => {
   let files: Files | undefined;
   try {
+    if(typeof window === "undefined") return;
     const hash = window.location.hash.slice(1);
     if (!hash) return;
     const uncompressedHash = uncompress(hash);
