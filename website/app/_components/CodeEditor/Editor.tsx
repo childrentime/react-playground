@@ -10,6 +10,7 @@ import { editor } from "monaco-editor";
 import { useTheme } from "../Header/context";
 import { useAutoMap } from "./auto-map";
 import { toast } from "sonner";
+import { useClipboard } from "@reactuses/core";
 
 const light = "light";
 const dark = "dark";
@@ -32,6 +33,7 @@ export function Editor(props: MyEditorProps) {
   const themeString = theme ? dark : light;
   const ataRef = useRef<ReturnType<typeof createATA> | null>(null);
   const autoMap = useAutoMap();
+  const [_, copy] = useClipboard();
 
   const handleEditorMount: OnMount = (editor, monaco) => {
     setMonacoInstance(monaco);
@@ -60,6 +62,10 @@ export function Editor(props: MyEditorProps) {
     // KeyMod
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyJ, () => {
       editor.getAction("editor.action.formatDocument")?.run();
+    });
+    editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.KeyS, () => {
+      copy(window.location.href);
+      toast.success("share link copied");
     });
     // map tips
     let decorations: string[] = [];

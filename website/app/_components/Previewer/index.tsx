@@ -143,7 +143,7 @@ export function Preview() {
           postMessage(true);
         }}
       />
-      <Message type="warn" content={error} />
+      <Message type="error" content={error} />
     </div>
   );
 }
