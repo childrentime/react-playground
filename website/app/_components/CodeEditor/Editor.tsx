@@ -2,6 +2,7 @@ import MonacoEditor, {
   EditorProps,
   Monaco,
   OnMount,
+  loader
 } from "@monaco-editor/react";
 import { useEffect, useRef, useState } from "react";
 import { darkTheme, lightTheme } from "./theme";
@@ -11,6 +12,13 @@ import { useTheme } from "../Header/context";
 import { useAutoMap } from "./auto-map";
 import { toast } from "sonner";
 import { useClipboard } from "@reactuses/core";
+
+if(typeof window !== 'undefined'){
+  loader.config({ paths: {
+    vs: '/monaco-editor/min/vs',
+  } });
+}
+
 
 const light = "light";
 const dark = "dark";
