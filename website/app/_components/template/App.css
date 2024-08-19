@@ -15,7 +15,6 @@
   padding: 2rem;
   margin: 0 auto;
   text-align: center;
-  color: #000;
 }
 
 body {
@@ -24,6 +23,7 @@ body {
   min-height: 100vh;
   margin: 0;
   place-items: center;
+  color: #000;
 }
 
 .dark {
